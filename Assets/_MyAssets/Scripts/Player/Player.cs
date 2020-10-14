@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace Player
 {
@@ -17,10 +18,33 @@ namespace Player
 
         private float speedAlongGravity = 0f;
 
+        private CinemachineSmoothPath m_nowCinemachine;
+        private float m_pathStartTime=0f;
+        [SerializeField] float m_pathDuration = 1.0f;
         private void Start()
         {
             this.cashedTransform = this.transform;
             this.cashedRigidbody = this.GetComponent<Rigidbody>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Rail"))
+            {
+                var path = other.GetComponent<CinemachineSmoothPath>();
+                m_nowCinemachine = path;
+                m_pathStartTime = Time.time;
+            }
+        }
+
+        private void Update()
+        {
+            if (m_nowCinemachine != null)
+            {
+                //シネマシン移動処理
+                var t = Time.time - m_pathStartTime;
+                cashedTransform.position=m_nowCinemachine.EvaluatePosition(t/m_pathDuration);
+            }
         }
 
         private void FixedUpdate()
