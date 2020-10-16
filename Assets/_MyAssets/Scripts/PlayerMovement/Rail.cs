@@ -8,7 +8,12 @@ namespace PlayerMovement
     [RequireComponent(typeof(CinemachineSmoothPath))]
     public class Rail : MonoBehaviour
     {
-        public Transform GoalPlanet => m_goalPlanet;
+        public Transform GoalPlanet
+        {
+            get => m_goalPlanet;
+            set => m_goalPlanet = value;
+        }
+
         [SerializeField] private Transform m_goalPlanet = default;
         [SerializeField] private float m_pathDuration = 1f;
         [SerializeField] private GameObject m_trackingCamera = default;
