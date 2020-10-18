@@ -562,6 +562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1419644950}
   - component: {fileID: 1419644949}
+  - component: {fileID: 1419644951}
   m_Layer: 0
   m_Name: StageGenerator
   m_TagString: Untagged
@@ -583,15 +584,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startPlanet: {fileID: 434580138}
   m_goalPlanet: {fileID: 1265571338}
-  m_planetLayer:
-    serializedVersion: 2
-    m_Bits: 256
   m_planetCounts: 10
   m_noiseScaleParallel: {x: 0, y: 0}
   m_noiseScalePerpendicular: {x: 10, y: 100}
   m_planetPrefab: {fileID: 3166170863914301213, guid: c2bdb4d0ebe3e874fa214506b1289fba,
-    type: 3}
-  m_railPrefab: {fileID: 3161749439364473892, guid: ff5617699584b07408ad49fe0829f5fb,
     type: 3}
 --- !u!4 &1419644950
 Transform:
@@ -607,6 +603,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1419644951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419644948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897940f1487ce40438e63b9a5ccb4cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_railPrefab: {fileID: 3161749439364473892, guid: ff5617699584b07408ad49fe0829f5fb,
+    type: 3}
+  m_planetLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1476672287
 GameObject:
   m_ObjectHideFlags: 0
