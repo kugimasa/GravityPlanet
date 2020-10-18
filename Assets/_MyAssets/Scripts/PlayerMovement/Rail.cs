@@ -24,6 +24,12 @@ namespace PlayerMovement
             set => m_goalPlanet = value;
         }
 
+        public float PathDuration
+        {
+            get => m_pathDuration;
+            set => m_pathDuration = value;
+        }
+
         [Header("Path")]
         [SerializeField] private Transform m_goalPlanet = default;
         [SerializeField] private float m_pathDuration = 1f;

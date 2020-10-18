@@ -615,11 +615,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897940f1487ce40438e63b9a5ccb4cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_railPrefab: {fileID: 3161749439364473892, guid: ff5617699584b07408ad49fe0829f5fb,
-    type: 3}
-  m_planetLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  m_player: {fileID: 536277618}
+  m_rails:
+  - m_weight: 1
+    m_prefab: {fileID: 8810943391675910126, guid: 5a9e4f74c8835de4eb1aaa56315c0b8f,
+      type: 3}
 --- !u!1 &1476672287
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 0
+    m_Time: 0.2
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
