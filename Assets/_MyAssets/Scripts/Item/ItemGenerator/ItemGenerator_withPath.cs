@@ -5,11 +5,11 @@ using Cinemachine;
 
 namespace Items
 {
-    public class ItemGenerator_path : MonoBehaviour
+    public class ItemGenerator_withPath : MonoBehaviour
     {
 
-        [SerializeField] GameObject m_itemPrefab;
-        [SerializeField] CinemachineSmoothPath m_targetPath;
+        [SerializeField] GameObject m_itemPrefab=default;
+        [SerializeField] CinemachineSmoothPath m_targetPath = default;
 
         [SerializeField, Range(0, 1)] float m_startItemPos=0;
         [SerializeField, Range(0, 1)] float m_endItemPos=1;
@@ -25,7 +25,7 @@ namespace Items
         [ContextMenu("GenerateItem")]
         private void GenerateItem()
         {
-            ItemGenerator.GenerateItem_withpath(m_itemPrefab, m_targetPath, m_itemCount, m_startItemPos, m_endItemPos);
+            ItemGenerator.GenerateItem_withPath(m_itemPrefab, m_targetPath, m_itemCount, m_startItemPos, m_endItemPos);
         }
     }
 }

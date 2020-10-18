@@ -145,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 126778783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0.435, z: -0.244}
+  m_LocalPosition: {x: 0.02, y: -0.567, z: -0.244}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 434580138}
@@ -327,7 +327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368716706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.346, y: 0.435, z: 0}
+  m_LocalPosition: {x: 0.346, y: -0.567, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 434580138}
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 536277613}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -714,8 +714,8 @@ MonoBehaviour:
     m_Bits: 256
   m_distanceOnGround: 1.05
   m_railTag: Rail
-  m_itemTag: Item
   m_currentPlanet: {fileID: 434580138}
+  m_itemTag: Item
 --- !u!54 &536277614
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -954,15 +954,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 593681655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3d1996f244c92c4f85fff8784e6c577, type: 3}
+  m_Script: {fileID: 11500000, guid: 71b3a639d61413a4197e76942cee8e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_itemPrefab: {fileID: 7973463340022757031, guid: 27ee90f7e8fd68545b6f888dd4183f39,
     type: 3}
   m_targetPath: {fileID: 593681660}
-  m_startItemPos: 0.294
-  m_endItemPos: 0.809
-  m_itemCount: 30
+  m_startItemPos: 0.303
+  m_endItemPos: 0.755
+  m_radius: 2
+  m_stackCount: 10
+  m_stackHoldCount: 10
   m_createOnAwake: 1
 --- !u!1 &873325085
 GameObject:
@@ -988,7 +990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873325085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.346, y: 0.435, z: -0.244}
+  m_LocalPosition: {x: 0.346, y: -0.567, z: -0.244}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 434580138}
@@ -1018,7 +1020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911022183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.346, y: 0.435, z: -0.113}
+  m_LocalPosition: {x: 0.346, y: -0.567, z: -0.113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 434580138}
@@ -1449,7 +1451,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714698259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.19, y: 0.435, z: -0.244}
+  m_LocalPosition: {x: 0.19, y: -0.567, z: -0.244}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 434580138}
@@ -1469,6 +1471,7 @@ GameObject:
   - component: {fileID: 1771029747}
   - component: {fileID: 1771029746}
   - component: {fileID: 1771029751}
+  - component: {fileID: 1771029752}
   m_Layer: 0
   m_Name: Rail1to2
   m_TagString: Rail
@@ -1592,6 +1595,27 @@ MonoBehaviour:
   m_goalPlanet: {fileID: 1147500882}
   m_pathDuration: 3
   m_trackingCamera: {fileID: 1962376238}
+--- !u!114 &1771029752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771029745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b3a639d61413a4197e76942cee8e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_itemPrefab: {fileID: 7973463340022757031, guid: 27ee90f7e8fd68545b6f888dd4183f39,
+    type: 3}
+  m_targetPath: {fileID: 1771029749}
+  m_startItemPos: 0.303
+  m_endItemPos: 0.755
+  m_radius: 2
+  m_stackCount: 10
+  m_stackHoldCount: 10
+  m_createOnAwake: 1
 --- !u!1 &1853434895
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,7 +1818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139006652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.154, y: 0.435, z: -0.244}
+  m_LocalPosition: {x: -0.154, y: -0.567, z: -0.244}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 434580138}

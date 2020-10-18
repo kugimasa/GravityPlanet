@@ -19,7 +19,7 @@ namespace Items
             if(!m_itemGetCount.ContainsKey(itemType)) m_itemGetCount[itemType]=0;
             m_itemGetCount[itemType]++;
 #if UNITY_EDITOR
-            OutLog();
+            //OutLog();
 #endif
         }
 

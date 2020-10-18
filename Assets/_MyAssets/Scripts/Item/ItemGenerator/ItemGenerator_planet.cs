@@ -6,8 +6,8 @@ namespace Items
 {
     public class ItemGenerator_planet : MonoBehaviour
     {
-        [SerializeField] GameObject m_itemPrefab;
-        [SerializeField] SphereCollider m_targetPlanet;
+        [SerializeField] GameObject m_itemPrefab = default;
+        [SerializeField] SphereCollider m_targetPlanet = default;
         [SerializeField] float m_distanceFromGround = 1.0f;
         [SerializeField] int m_createCount=1;
 

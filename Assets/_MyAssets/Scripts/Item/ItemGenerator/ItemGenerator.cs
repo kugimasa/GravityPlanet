@@ -5,7 +5,8 @@ using Cinemachine;
 
 namespace Items
 {
-    public class ItemGenerator
+    //item生成の実装はこれが行っている
+    public static class ItemGenerator
     {
         /// <summary>
         /// itemを惑星に立つようにする
@@ -15,6 +16,10 @@ namespace Items
         public static void DirectToPlanet(Transform item,Transform planet)
         {
             item.up = (item.position - planet.position).normalized;
+            if (item.gameObject.TryGetComponent<GravityItem>(out var gravityItem))
+            {
+                gravityItem.SetPlanet(planet);
+            }
         }
 
         /// <summary>
@@ -69,7 +74,7 @@ namespace Items
         /// <param name="startpos">作成を開始する場所(0~1)</param>
         /// <param name="endpos">作成を終了するする場所(0~1)</param>
         /// <returns></returns>
-        public static List<GameObject> GenerateItem_withpath(GameObject itemPrefab,CinemachineSmoothPath path,int generateCount,float startpos=0,float endpos=1)
+        public static List<GameObject> GenerateItem_withPath(GameObject itemPrefab,CinemachineSmoothPath path,int generateCount,float startpos=0,float endpos=1)
         {
             //値の修正
             endpos = Mathf.Clamp01(endpos);
@@ -89,6 +94,72 @@ namespace Items
             }
 
             //アイテムの生成
+            List<GameObject> resultList = new List<GameObject>();
+            foreach (var pos in posList)
+            {
+                var obj = GameObject.Instantiate(itemPrefab, pos, Quaternion.identity);
+                resultList.Add(obj);
+            }
+            return resultList;
+        }
+        /// <summary>
+        /// pathに沿って円状にアイテムを配置する
+        /// </summary>
+        /// <param name="itemPrefab">作成するアイテム</param>
+        /// <param name="path">対象のpath</param>
+        /// <param name="circleCount">作成する円の数</param>
+        /// <param name="unitItemCount">円一つ当たりの個数</param>
+        /// <param name="startpos">作成を開始する場所(0~1)</param>
+        /// <param name="endpos">作成を終了するする場所(0~1)</param>
+        /// <param name="radias">円の大きさ</param>
+        /// <returns></returns>
+        public static List<GameObject> GenerateItem_aroundPath(GameObject itemPrefab, CinemachineSmoothPath path,int circleCount, int unitItemCount, float startpos = 0, float endpos = 1, float radias = 2.0f)
+        {
+            //値の修正
+            endpos = Mathf.Clamp01(endpos);
+            startpos = Mathf.Clamp01(startpos);
+            if (endpos <= startpos)
+            {
+                var temp = endpos;
+                endpos = startpos;
+                startpos = temp;
+            }
+            //経路の作成
+            var posList = new List<(Vector3 pos,Vector3 direction)>();
+            var distance = (endpos - startpos) / circleCount;
+
+            //ちょっとずれた位置を調べてpathの傾きを取得
+            for (int i = 0; i < circleCount; i++)
+            {
+                var checkPos = startpos + distance * i;
+                var dl = (checkPos < 1.0f) ? 0.01f : -0.01f;
+                var pos = path.EvaluatePositionAtUnit(checkPos, CinemachinePathBase.PositionUnits.Normalized);
+                var dpos= path.EvaluatePositionAtUnit(checkPos+dl, CinemachinePathBase.PositionUnits.Normalized);
+                posList.Add((pos,((dpos-pos)*Mathf.Sign(dl)).normalized));
+            }
+
+            //アイテムの生成
+            List<GameObject> resultList = new List<GameObject>();
+            foreach (var posData in posList)
+            {
+                var center = posData.pos;
+                var up = posData.direction;
+                resultList.AddRange( GenerateItem_circle(itemPrefab, center, radias, unitItemCount, up));
+            }
+            return resultList;
+        }
+
+        public static List<GameObject> GenerateItem_circle(GameObject itemPrefab,Vector3 center, float radias,int generateCount,Vector3 axis)
+        {
+            var samplePos = (Vector3.ProjectOnPlane(Vector3.one,axis)).normalized * radias+center;
+            float radian = 360.0f / generateCount;
+            List<Vector3> posList = new List<Vector3>();
+            for(int i = 0; i < generateCount; i++)
+            {
+                var pos = Quaternion.AngleAxis(radian * i, axis) * (samplePos-center);
+                pos += center;
+                posList.Add(pos);
+            }
             List<GameObject> resultList = new List<GameObject>();
             foreach (var pos in posList)
             {

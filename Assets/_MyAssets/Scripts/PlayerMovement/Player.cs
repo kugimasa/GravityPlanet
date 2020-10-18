@@ -19,9 +19,11 @@ namespace PlayerMovement
 
         [Header("PathMove")]
         [SerializeField] private string m_railTag = "Rail";
-        [SerializeField] private string m_itemTag = "Item";
         [SerializeField] private Transform m_currentPlanet = default;
-        
+
+        [Header("Item")]
+        [SerializeField] private string m_itemTag = "Item";
+
         private Transform m_transform = default;
         private Rigidbody m_rigidbody = default;
         

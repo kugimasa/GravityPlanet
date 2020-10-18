@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7973463340022757029}
   - component: {fileID: 7973463340022757028}
   - component: {fileID: -683787909821292678}
+  - component: {fileID: 8750085596158276404}
   m_Layer: 0
   m_Name: item_sample_2
   m_TagString: Item
@@ -108,3 +109,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_itemType: item_sample_2
+--- !u!114 &8750085596158276404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7973463340022757031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b3601040fac304e9e62c8b9dc38416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_chaseTargetTransform: {fileID: 0}
+  m_chaseSpeed: 25
+  m_chaseLength: 2.1
+  m_chaseEndLength: 10
+  m_playerTag: Player

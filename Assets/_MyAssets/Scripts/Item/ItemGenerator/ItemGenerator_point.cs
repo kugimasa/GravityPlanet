@@ -6,9 +6,9 @@ namespace Items
 {
     public class ItemGenerator_point : MonoBehaviour
     {
-        [SerializeField] GameObject m_itemPrefab;
-        [SerializeField] Transform m_targetPlanet;
-        [SerializeField] Transform m_pointParent;
+        [SerializeField] GameObject m_itemPrefab=default;
+        [SerializeField] Transform m_targetPlanet = default;
+        [SerializeField] Transform m_pointParent = default;
 
 
         [SerializeField] bool m_createOnAwake = false;
