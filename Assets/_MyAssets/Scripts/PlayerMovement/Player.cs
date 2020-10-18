@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Items;
 
 namespace PlayerMovement
 {
@@ -18,6 +19,7 @@ namespace PlayerMovement
 
         [Header("PathMove")]
         [SerializeField] private string m_railTag = "Rail";
+        [SerializeField] private string m_itemTag = "Item";
         [SerializeField] private Transform m_currentPlanet = default;
         
         private Transform m_transform = default;
@@ -38,6 +40,10 @@ namespace PlayerMovement
                 var rail = other.GetComponent<Rail>();
                 m_currentPlanet = rail.GoalPlanet;
                 rail.MoveAlongPath(m_transform);
+            }else if (other.CompareTag(m_itemTag))
+            {
+                var item = other.GetComponent<Item>();
+                item.Get();
             }
         }
 
