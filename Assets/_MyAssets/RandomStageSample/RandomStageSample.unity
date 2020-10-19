@@ -620,6 +620,9 @@ MonoBehaviour:
   - m_weight: 1
     m_prefab: {fileID: 8810943391675910126, guid: 5a9e4f74c8835de4eb1aaa56315c0b8f,
       type: 3}
+  - m_weight: 10
+    m_prefab: {fileID: 7068005749530593009, guid: aaaa7284c35b2a74cbd8445f74f89819,
+      type: 3}
 --- !u!1 &1476672287
 GameObject:
   m_ObjectHideFlags: 0

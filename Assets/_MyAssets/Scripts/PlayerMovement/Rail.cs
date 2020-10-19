@@ -43,6 +43,7 @@ namespace PlayerMovement
 
         private CinemachineSmoothPath m_path;
         private CinemachineBrain m_cameraBrain;
+        private CinemachineBlendDefinition.Style m_previousStyle;
         private Transform m_playerTransform;
         private float m_pathStartTime;
 
@@ -50,7 +51,8 @@ namespace PlayerMovement
         {
             m_playerTransform = targetTransform;
             m_pathStartTime = Time.time;
-            
+            m_previousStyle = m_cameraBrain.m_DefaultBlend.m_Style;
+
             foreach(var activation in m_railActivations)
             {
                 activation.m_activated.SetActive(activation.m_rate <= 0f);
@@ -102,6 +104,7 @@ namespace PlayerMovement
                 {
                     activation.m_activated.SetActive(false);
                 }
+                m_cameraBrain.m_DefaultBlend.m_Style = m_previousStyle;
             }
         }
     }
