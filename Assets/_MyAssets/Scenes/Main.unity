@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -839,7 +839,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_goalPlanet: {fileID: 1853434899}
   m_pathDuration: 10
-  m_trackingCamera: {fileID: 366202343}
+  m_railActivations:
+  - m_rate: 0
+    m_activated: {fileID: 366202343}
+    m_blendStyle: 0
+  m_trackingObject: {fileID: 0}
+  m_trackingDelay: 0.1
 --- !u!1 &1147500878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1382,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_goalPlanet: {fileID: 1147500882}
   m_pathDuration: 3
-  m_trackingCamera: {fileID: 1962376238}
+  m_railActivations:
+  - m_rate: 0
+    m_activated: {fileID: 1962376238}
+    m_blendStyle: 0
+  m_trackingObject: {fileID: 0}
+  m_trackingDelay: 0.1
 --- !u!1 &1853434895
 GameObject:
   m_ObjectHideFlags: 0
