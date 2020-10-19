@@ -16,4 +16,5 @@ assignees: ''
 **Assignees**にも登録
 
 # 関連PR
-以下に`develop`にマージされるPRの番号を記入してください
+以下に`develop`にマージするPRの番号を記入してください
+参照したPRにもこのIssueの番号を記入してください
