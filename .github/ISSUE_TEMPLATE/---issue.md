@@ -7,6 +7,9 @@ assignees: ''
 
 ---
 
+# PR
+`develop_fugafuga` => `develop`
+
 # 種別
 - [ ] UI
 - [ ] 演出

@@ -7,6 +7,9 @@ assignees: ''
 
 ---
 
+# PR
+`develop_hogehoge` => `develop`
+
 # 要件
 これだけはやるというようなタスクを**1つ**記入
 - 惑星をランダムに配置する
