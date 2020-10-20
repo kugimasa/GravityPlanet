@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlayerMovement;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace GameManagement
     public class GameManager : MonoBehaviour
     {
         [Header("Player")]
-        [SerializeField] private Transform m_player = default;
+        [SerializeField] private Player m_player = default;
 
         [Header("START")]
         [SerializeField] private float m_waitTimeToStart = 3f;
@@ -68,15 +69,24 @@ namespace GameManagement
                     // タイム測定はしない.
                     //m_playTime.enable = false;
                     //m_playTime.InitializeTime();
+
+                    // プレイヤーは制御不能に.
+                    m_player.m_canMove = false;
                     break;
                 case State.Play:
                     // タイム測定スタート.
                     //m_playTime.enable = true;
                     //m_playTime.InitializeTime();
+
+                    // プレイヤーは制御可能に.
+                    m_player.m_canMove = true;
                     break;
                 case State.End:
                     // タイム計測ストップ.
                     //m_playTime.enable = false;
+
+                    // プレイヤーは制御不能に.
+                    m_player.m_canMove = false;
                     break;
             }
         }
@@ -96,6 +106,6 @@ namespace GameManagement
             }
         }
 
-        private bool IsGoal() => Vector3.Distance(m_player.position, m_goalPlanet.position) < m_goalThreshold;
+        private bool IsGoal() => Vector3.Distance(m_player.transform.position, m_goalPlanet.position) < m_goalThreshold;
     }
 }

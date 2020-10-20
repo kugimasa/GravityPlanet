@@ -606,6 +606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gravityScale: 9.8
   m_walkSpeed: 10
+  m_canMove: 1
   m_groundLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -1511,7 +1512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cde4fe4e9a968a74091882123e910dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: {fileID: 536277618}
+  m_player: {fileID: 536277613}
   m_waitTimeToStart: 3
   m_goalPlanet: {fileID: 1853434899}
   m_goalThreshold: 21
