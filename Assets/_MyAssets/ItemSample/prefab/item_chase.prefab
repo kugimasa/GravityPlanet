@@ -13,11 +13,9 @@ GameObject:
   - component: {fileID: 7973463340022757029}
   - component: {fileID: 7973463340022757028}
   - component: {fileID: -683787909821292678}
-  - component: {fileID: 8960288039195743314}
-  - component: {fileID: 5408362355088038446}
-  - component: {fileID: 4030088706348937878}
+  - component: {fileID: 8750085596158276404}
   m_Layer: 0
-  m_Name: item_sample_1
+  m_Name: item_chase
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7973463340022757031}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &7973463340022757029
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -110,43 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5896ff14256ab7c42a6d65987def5537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_itemType: item_sample_1
---- !u!54 &8960288039195743314
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7973463340022757031}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &5408362355088038446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7973463340022757031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab658f42b34e01478a1557fc73b5dd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_gravityScale: 9.8
-  m_groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  m_groundTag: Ground
-  m_distanceOnGround: 0.3
-  m_currentPlanet: {fileID: 0}
---- !u!114 &4030088706348937878
+  m_itemType: item_sample_2
+--- !u!114 &8750085596158276404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_chaseTargetTransform: {fileID: 0}
-  m_chaseSpeed: 6
-  m_chaseLength: 2
-  m_chaseEndLength: 5
+  m_chaseSpeed: 25
+  m_chaseLength: 5
+  m_chaseEndLength: 10
   m_playerTag: Player

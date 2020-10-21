@@ -177,11 +177,17 @@ namespace Items
             var posy = Random.Range(-1.0f, 1.0f);
             var posz = Random.Range(-1.0f, 1.0f);
             var randPos = new Vector3(posx, posy, posz).normalized;
-            var gravityDirection = (randPos - center).normalized;
+            var gravityDirection = randPos;
             //完全な球体のみを想定
             var pos = center + gravityDirection * (planetTransform.localScale.x * targetPlanet.radius + distanceFromGround);
             return pos;
         }
         #endregion
+
+        public static IEnumerator WaitFrameAction(int frame,System.Action act)
+        {
+            for (int i = 0; i < frame; i++) yield return null;
+            act.Invoke();
+        }
     }
 }

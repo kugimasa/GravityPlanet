@@ -25,7 +25,9 @@ namespace Items
         [ContextMenu("GenerateItem")]
         private void GenerateItem()
         {
-            ItemGenerator.GenerateItem_withPath(m_itemPrefab, m_targetPath, m_itemCount, m_startItemPos, m_endItemPos);
+            StartCoroutine( ItemGenerator.WaitFrameAction(1,()=>
+            ItemGenerator.GenerateItem_withPath(m_itemPrefab, m_targetPath, m_itemCount, m_startItemPos, m_endItemPos)
+            ));
         }
     }
 }

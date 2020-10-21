@@ -21,8 +21,11 @@ namespace Items
         [ContextMenu("GenerateItem")]
         private void GenerateItem()
         {
-            var items= ItemGenerator.GenerateItem_onPlanet_random(m_itemPrefab, m_targetPlanet, m_createCount, m_distanceFromGround);
-            foreach (var item in items) ItemGenerator.DirectToPlanet(item.transform, m_targetPlanet.transform);
+            StartCoroutine(ItemGenerator.WaitFrameAction(1, () =>
+            {
+                var items = ItemGenerator.GenerateItem_onPlanet_random(m_itemPrefab, m_targetPlanet, m_createCount, m_distanceFromGround);
+                foreach (var item in items) ItemGenerator.DirectToPlanet(item.transform, m_targetPlanet.transform);
+            }));
         }
     }
 }
