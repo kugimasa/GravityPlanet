@@ -19,9 +19,8 @@ namespace GameManagement
         [SerializeField] private float m_goalThreshold = 5f;
 
         // プレイタイムの処理. マージ後に修正予定.
-        //[Header("Timer")]
-        //[SerializeField] private TimeController m_startCountDown = default;
-        //[SerializeField] private TimeController m_playTime = default;
+        [Header("Timer")]
+        [SerializeField] private TimeController m_playTime = default;
 
         private enum State
         {
@@ -67,23 +66,23 @@ namespace GameManagement
             {
                 case State.Start:
                     // タイム測定はしない.
-                    //m_playTime.enable = false;
-                    //m_playTime.InitializeTime();
+                    m_playTime.enabled = false;
+                    m_playTime.InitializeTime();
 
                     // プレイヤーは制御不能に.
                     m_player.m_canMove = false;
                     break;
                 case State.Play:
                     // タイム測定スタート.
-                    //m_playTime.enable = true;
-                    //m_playTime.InitializeTime();
+                    m_playTime.enabled = true;
+                    m_playTime.InitializeTime();
 
                     // プレイヤーは制御可能に.
                     m_player.m_canMove = true;
                     break;
                 case State.End:
                     // タイム計測ストップ.
-                    //m_playTime.enable = false;
+                    m_playTime.enabled = false;
 
                     // プレイヤーは制御不能に.
                     m_player.m_canMove = false;
