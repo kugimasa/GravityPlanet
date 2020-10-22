@@ -17,6 +17,7 @@ namespace GameManagement
         [Header("GOAL")]
         [SerializeField] private Transform m_goalPlanet = default;
         [SerializeField] private float m_goalThreshold = 5f;
+        [SerializeField] private GoalView m_goalView = default;
 
         [Header("Timer")]
         [SerializeField] private TimeController m_playTime = default;
@@ -85,6 +86,9 @@ namespace GameManagement
 
                     // プレイヤーは制御不能に.
                     m_player.m_canMove = false;
+
+                    // ゴール演出を表示.
+                    m_goalView.GoalViewAction();
                     break;
             }
         }
