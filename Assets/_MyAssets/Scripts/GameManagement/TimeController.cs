@@ -21,7 +21,6 @@ namespace GameManagement
         void Update()
         {
             UpdateTime();
-            Debug.Log(m_timeText);
         }
 
         /// <summary>
