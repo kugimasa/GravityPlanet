@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caab2866d70f66542a87bafeed564de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_itemPrefab: {fileID: 7973463340022757031, guid: 51fb9e9b026426340a5f87cd6394095a,
+  m_itemPrefab: {fileID: 3981299522406779360, guid: a2147daec2e15c249860d58cbffdc255,
     type: 3}
   m_targetPlanet: {fileID: 422664708034644766}
   m_distanceFromGround: 1
