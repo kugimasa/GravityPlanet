@@ -18,7 +18,6 @@ namespace GameManagement
         [SerializeField] private Transform m_goalPlanet = default;
         [SerializeField] private float m_goalThreshold = 5f;
 
-        // プレイタイムの処理. マージ後に修正予定.
         [Header("Timer")]
         [SerializeField] private TimeController m_playTime = default;
 
@@ -106,5 +105,39 @@ namespace GameManagement
         }
 
         private bool IsGoal() => Vector3.Distance(m_player.transform.position, m_goalPlanet.position) < m_goalThreshold;
+
+        /// <summary>プレイ開始前のカウントダウン用残り時間</summary>
+        /// <remarks>カウントダウンをしていない場合は-1を返す</remarks>
+        public float StartRestTime
+        {
+            get
+            {
+                if(m_state == State.Start)
+                {
+                    return m_waitTimeToStart - m_timer;
+                }
+                else
+                {
+                    return -1f;
+                }
+            }
+        }
+
+        /// <summary>プレイ時間</summary>
+        /// <remarks>プレイが始まっていない場合はnullを返す</remarks>
+        public string PlayTime
+        {
+            get
+            {
+                if(m_state == State.Start)
+                {
+                    return null;
+                }
+                else
+                {
+                    return m_playTime.GetTimeText();
+                }
+            }
+        }
     }
 }
