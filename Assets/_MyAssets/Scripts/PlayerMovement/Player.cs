@@ -12,6 +12,7 @@ namespace PlayerMovement
         [Header("Movement")]
         [SerializeField] private float m_gravityScale = 9.8f;
         [SerializeField] private float m_walkSpeed = 3f;
+        public bool m_canMove = true;
         
         [Header("Ground")]
         [SerializeField] private LayerMask m_groundLayer = default;
@@ -70,10 +71,14 @@ namespace PlayerMovement
             this.m_transform.rotation = Quaternion.LookRotation(forward, upwards);
 
             // 移動.
-            var vInput = Input.GetAxis("Vertical");
-            var hInput = Input.GetAxis("Horizontal");
-            var walkDirection = (this.m_transform.forward * vInput + this.m_transform.right * hInput).normalized;
-            var walkVelocity = walkDirection * this.m_walkSpeed;
+            var walkVelocity = Vector3.zero;
+            if (m_canMove)
+            {
+                var vInput = Input.GetAxis("Vertical");
+                var hInput = Input.GetAxis("Horizontal");
+                var walkDirection = (this.m_transform.forward * vInput + this.m_transform.right * hInput).normalized;
+                walkVelocity = walkDirection * this.m_walkSpeed;
+            }
 
             // Rigidbodyに反映. (速度制御)
             this.m_rigidbody.velocity = gravityVelocity + walkVelocity;
