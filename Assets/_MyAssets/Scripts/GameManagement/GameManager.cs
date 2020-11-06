@@ -1,9 +1,8 @@
-﻿using PlayerMovement;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Players;
 namespace GameManagement
 {
     public class GameManager : MonoBehaviour

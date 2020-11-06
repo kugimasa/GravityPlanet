@@ -1,12 +1,16 @@
-﻿using System;
+﻿using GameRules;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 namespace GameManagement
 {
-    public class TimeController : MonoBehaviour
+    public class TimeController : MonoBehaviour,ITimeController
     {
+        public float CurrentTime { get { return m_currentTime; } }//後付けでinterface実装
+
         private float m_currentTime;
         private int m_minutes;
         private int m_seconds;
@@ -27,7 +31,7 @@ namespace GameManagement
         /// 経過時間を更新するための関数
         /// Update関数内で呼び出す
         /// </summary>
-        private void UpdateTime()
+        public void UpdateTime()
         {
             m_currentTime += Time.deltaTime;
             m_minutes = (int)(m_currentTime / 60);
