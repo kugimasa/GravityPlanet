@@ -475,4 +475,4 @@ MonoBehaviour:
   m_startItemPos: 0.027
   m_endItemPos: 0.75
   m_itemCount: 15
-  m_createOnAwake: 1
+  m_createOnAwake: 0

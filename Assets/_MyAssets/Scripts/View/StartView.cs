@@ -1,5 +1,4 @@
-﻿using GameManagement;
-using GameRules;
+﻿using GameRules;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

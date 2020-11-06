@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Items;
 namespace RandomStage
 {
     [RequireComponent(typeof(RailFactory))]
@@ -26,6 +26,11 @@ namespace RandomStage
             m_railFactory = GetComponent<RailFactory>();
             List<Transform> planets = CreatePlanets(m_startPlanet, m_goalPlanet);
             CreateRails(planets);
+            //追記
+            foreach(var planet in planets)
+            {
+                if (planet.TryGetComponent<IItemGenerator>(out var ig))ig.GenerateItem();
+            }
         }
 
         private void CreateRails(List<Transform> planets)
@@ -33,7 +38,12 @@ namespace RandomStage
             Transform prePlanet = null;
             foreach (var nextPlanet in planets)
             {
-                if (prePlanet != null) m_railFactory.Create(prePlanet, nextPlanet);
+                if (prePlanet != null)
+                {
+                    var rail=m_railFactory.Create(prePlanet, nextPlanet);
+                    //追記
+                    if (rail.TryGetComponent<IItemGenerator>(out var ig)) ig.GenerateItem();
+                }
                 prePlanet = nextPlanet;
             }
         }

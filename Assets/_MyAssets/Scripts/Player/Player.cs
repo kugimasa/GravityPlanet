@@ -1,4 +1,5 @@
 ﻿using GameRules;
+using RandomStage;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace Players
         {
             if (other.CompareTag(m_railTag))
             {
-                var rail = other.GetComponent<IRail>();
+                var rail = other.GetComponent<Rail>();
                 m_currentPlanet = rail.GoalPlanet;
                 rail.MoveAlongPath(m_transform);
             }else if (other.CompareTag(m_itemTag))

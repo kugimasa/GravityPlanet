@@ -327,7 +327,7 @@ MonoBehaviour:
   m_startItemPos: 0.096
   m_endItemPos: 0.805
   m_itemCount: 15
-  m_createOnAwake: 1
+  m_createOnAwake: 0
 --- !u!1 &5895085032294877374
 GameObject:
   m_ObjectHideFlags: 0

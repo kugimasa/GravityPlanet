@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using RandomStage;
 
 namespace Items
 {
-    public class ItemGenerator_circle : MonoBehaviour
+    public class ItemGenerator_circle : MonoBehaviour,IItemGenerator
     {
         [SerializeField] GameObject m_itemPrefab = default;
 
@@ -20,7 +21,7 @@ namespace Items
         }
 
         [ContextMenu("GenerateItem")]
-        private void GenerateItem()
+        public void GenerateItem()
         {
             ItemGenerator.GenerateItem_circle(m_itemPrefab, transform.position,m_radiaus, m_itemCount, transform.up);
         }

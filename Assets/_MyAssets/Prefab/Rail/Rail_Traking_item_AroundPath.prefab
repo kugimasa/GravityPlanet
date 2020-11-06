@@ -188,7 +188,7 @@ MonoBehaviour:
   m_radius: 2
   m_stackCount: 8
   m_stackHoldCount: 10
-  m_createOnAwake: 1
+  m_createOnAwake: 0
 --- !u!1 &8172309654550171814
 GameObject:
   m_ObjectHideFlags: 0

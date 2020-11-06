@@ -449,8 +449,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 595382802}
-  - component: {fileID: 595382801}
-  - component: {fileID: 595382800}
   - component: {fileID: 595382803}
   m_Layer: 0
   m_Name: GameManager
@@ -459,36 +457,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &595382800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595382799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d810b264c0a5a4e9dacc6f44a37dff61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &595382801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595382799}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cde4fe4e9a968a74091882123e910dc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_player: {fileID: 536277613}
-  m_waitTimeToStart: 3
-  m_goalPlanet: {fileID: 712121133}
-  m_goalThreshold: 31
-  m_goalView: {fileID: 1205873021}
-  m_playTime: {fileID: 595382800}
 --- !u!4 &595382802
 Transform:
   m_ObjectHideFlags: 0
@@ -539,7 +507,7 @@ PrefabInstance:
     - target: {fileID: 3166170863914301201, guid: c2bdb4d0ebe3e874fa214506b1289fba,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3166170863914301201, guid: c2bdb4d0ebe3e874fa214506b1289fba,
         type: 3}
@@ -739,18 +707,6 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee4703304bded8a4ca5731ed78a14fba, type: 3}
---- !u!114 &1205873021 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 861680126270484930, guid: ee4703304bded8a4ca5731ed78a14fba,
-    type: 3}
-  m_PrefabInstance: {fileID: 1205873020}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0976acd50835aac4d8ad1474b858f70f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1240515125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1391,7 @@ MonoBehaviour:
   - m_weight: 1
     m_prefab: {fileID: 7908710810714353112, guid: a4c619c21d538b245865815296ce9810,
       type: 3}
-  - m_weight: 4
+  - m_weight: 91.7
     m_prefab: {fileID: 8172309654523484877, guid: 9e859db5933198f44ba8716ce3659d5b,
       type: 3}
   - m_weight: 4
@@ -1489,7 +1445,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 536277613}
-  timeController: {fileID: 595382800}
 --- !u!114 &2021214161
 MonoBehaviour:
   m_ObjectHideFlags: 0

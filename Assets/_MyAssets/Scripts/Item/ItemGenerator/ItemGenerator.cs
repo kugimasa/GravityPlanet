@@ -13,15 +13,12 @@ namespace Items
         /// </summary>
         /// <param name="item">アイテム</param>
         /// <param name="planet">惑星</param>
-        public static void DirectToPlanet(Transform item,Transform planet)
+        public static void DirectToPlanet(Transform item, Transform planet)
         {
             item.up = (item.position - planet.position).normalized;
-            if (item.gameObject.TryGetComponent<GravityItem>(out var gravityItem))
-            {
-                gravityItem.SetPlanet(planet);
-            }
+            if (item.TryGetComponent<INeedPlanet>(out var inp)) inp.SupplyPlanet(planet);
         }
-
+        
         /// <summary>
         /// pointParentの子の場所にアイテムを配置する
         /// </summary>
@@ -184,10 +181,5 @@ namespace Items
         }
         #endregion
 
-        public static IEnumerator WaitFrameAction(int frame,System.Action act)
-        {
-            for (int i = 0; i < frame; i++) yield return null;
-            act.Invoke();
-        }
     }
 }

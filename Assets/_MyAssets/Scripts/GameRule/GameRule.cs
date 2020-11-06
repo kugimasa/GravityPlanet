@@ -2,51 +2,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Players;
-namespace GameManagement
-{
-    public class GameManager : MonoBehaviour
-    {
-        [Header("Player")]
-        [SerializeField] private Player m_player = default;
+using Zenject;
 
+namespace GameRules
+{
+    public class GameRule : MonoBehaviour
+    {
+
+        [Header("Player")]
+        [Inject] private IPlayer m_player = default;
         [Header("START")]
         [SerializeField] private float m_waitTimeToStart = 3f;
-
         [Header("GOAL")]
         [SerializeField] private Transform m_goalPlanet = default;
-        [SerializeField] private float m_goalThreshold = 5f;
-        [SerializeField] private GoalView m_goalView = default;
-
+        [SerializeField] private float m_goalThreshold = 5f;//ここで初期化あんましたくない
         [Header("Timer")]
-        [SerializeField] private TimeController m_playTime = default;
-
-        private enum State
+        [Inject] private ITimeController m_playTime = default;//シリアライズ不可能なのでzenject?
+        public enum State
         {
             None = -1,
             Start,
             Play,
             End,
         }
-
-        private State m_state;
+        //private float m_timer = 0f;
+        [SerializeField]private State m_state;
         private State m_nextState = State.Start;
-        private float m_timer = 0f;
 
+        public State NowState { get { return m_state; } }
         private void Update()
         {
-            // タイマー処理.
-            m_timer += Time.deltaTime;
-
             // 状態遷移のチェック.
-            if(m_nextState != State.None)
+            if (m_nextState != State.None)
             {
                 // 状態を変更.
                 m_state = m_nextState;
                 m_nextState = State.None;
 
                 // 初期化.
-                m_timer = 0f;
+                //m_timer = 0f;
                 InitializeState(m_state);
 
                 // 遷移処理と更新処理は同時に行わないことにする.
@@ -64,30 +58,21 @@ namespace GameManagement
             switch (state)
             {
                 case State.Start:
-                    // タイム測定はしない.
-                    m_playTime.enabled = false;
                     m_playTime.InitializeTime();
 
                     // プレイヤーは制御不能に.
-                    m_player.m_canMove = false;
+                    m_player.CanMove = false;
                     break;
                 case State.Play:
-                    // タイム測定スタート.
-                    m_playTime.enabled = true;
                     m_playTime.InitializeTime();
 
                     // プレイヤーは制御可能に.
-                    m_player.m_canMove = true;
+                    m_player.CanMove = true;
                     break;
                 case State.End:
-                    // タイム計測ストップ.
-                    m_playTime.enabled = false;
 
                     // プレイヤーは制御不能に.
-                    m_player.m_canMove = false;
-
-                    // ゴール演出を表示.
-                    m_goalView.GoalViewAction();
+                    m_player.CanMove = false;
                     break;
             }
         }
@@ -98,26 +83,27 @@ namespace GameManagement
             {
                 case State.Start:
                     // 時間経過でプレイスタート.
-                    if (m_timer > m_waitTimeToStart) m_nextState = State.Play;
+                    m_playTime.UpdateTime();
+                    if (m_playTime.CurrentTime > m_waitTimeToStart) m_nextState = State.Play;
                     break;
                 case State.Play:
+
                     // ゴールしたら終了.
                     if (IsGoal()) m_nextState = State.End;
+                    else m_playTime.UpdateTime();
                     break;
             }
         }
-
         private bool IsGoal() => Vector3.Distance(m_player.transform.position, m_goalPlanet.position) < m_goalThreshold;
 
-        /// <summary>プレイ開始前のカウントダウン用残り時間</summary>
-        /// <remarks>カウントダウンをしていない場合は-1を返す</remarks>
+        //ここはviewで実装するのが望ましい
         public float StartRestTime
         {
             get
             {
-                if(m_state == State.Start)
+                if (m_state == State.Start)
                 {
-                    return m_waitTimeToStart - m_timer;
+                    return m_waitTimeToStart - m_playTime.CurrentTime;
                 }
                 else
                 {
@@ -125,22 +111,22 @@ namespace GameManagement
                 }
             }
         }
-
         /// <summary>プレイ時間</summary>
-        /// <remarks>プレイが始まっていない場合はnullを返す</remarks>
+         /// <remarks>プレイが始まっていない場合はnullを返す</remarks>
         public string PlayTime
         {
             get
             {
-                if(m_state == State.Start)
+                if (m_state == State.Start)
                 {
                     return null;
                 }
                 else
                 {
-                    return m_playTime.GetTimeText();
+                    return m_playTime.CurrentTime.ToString();
                 }
             }
         }
     }
+
 }

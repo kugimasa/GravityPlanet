@@ -111,4 +111,4 @@ MonoBehaviour:
   m_targetPlanet: {fileID: 422664708034644766}
   m_distanceFromGround: 1
   m_createCount: 10
-  m_createOnAwake: 1
+  m_createOnAwake: 0

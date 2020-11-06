@@ -9,7 +9,7 @@ using Players;
 namespace RandomStage
 {
     [RequireComponent(typeof(CinemachineSmoothPath))]
-    public class Rail : MonoBehaviour,IRail
+    public class Rail : MonoBehaviour
     {
         [Serializable]
         private class RailActivation

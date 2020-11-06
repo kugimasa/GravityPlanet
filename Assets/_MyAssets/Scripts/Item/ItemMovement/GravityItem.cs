@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Items
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class GravityItem : MonoBehaviour
+    public class GravityItem : MonoBehaviour,INeedPlanet
     {
         [Header("Movement")]
         [SerializeField] private float m_gravityScale = 9.8f;
@@ -48,9 +48,10 @@ namespace Items
             this.m_rigidbody.velocity = gravityVelocity;
         }
 
-        public void SetPlanet(Transform planetTransform)
+        public void SupplyPlanet(Transform planetTransform)
         {
             m_currentPlanet = planetTransform;
+            transform.up = (transform.position - planetTransform.position).normalized;
         }
 
     }

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Timeline;
 
-namespace GameManagement
+namespace GameRules
 {
-    public class TimeController : MonoBehaviour,ITimeController
+    public class TimeController : ITimeController
     {
         public float CurrentTime { get { return m_currentTime; } }//後付けでinterface実装
 
@@ -16,16 +16,16 @@ namespace GameManagement
         private int m_seconds;
         private int m_milliseconds;
         private string m_timeText;
-        private void Start()
-        {
-            InitializeTime();
-        }
+        //private void Start()
+        //{
+        //    InitializeTime();
+        //}
 
-        // Update is called once per frame
-        void Update()
-        {
-            UpdateTime();
-        }
+        //// Update is called once per frame
+        //void Update()
+        //{
+        //    UpdateTime();
+        //}
 
         /// <summary>
         /// 経過時間を更新するための関数

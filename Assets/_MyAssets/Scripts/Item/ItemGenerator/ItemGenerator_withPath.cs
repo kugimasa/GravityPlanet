@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using RandomStage;
 
 namespace Items
 {
-    public class ItemGenerator_withPath : MonoBehaviour
+    public class ItemGenerator_withPath : MonoBehaviour, IItemGenerator
     {
 
         [SerializeField] GameObject m_itemPrefab=default;
@@ -23,11 +24,9 @@ namespace Items
         }
 
         [ContextMenu("GenerateItem")]
-        private void GenerateItem()
+        public void GenerateItem()
         {
-            StartCoroutine( ItemGenerator.WaitFrameAction(1,()=>
-            ItemGenerator.GenerateItem_withPath(m_itemPrefab, m_targetPath, m_itemCount, m_startItemPos, m_endItemPos)
-            ));
+            ItemGenerator.GenerateItem_withPath(m_itemPrefab, m_targetPath, m_itemCount, m_startItemPos, m_endItemPos);
         }
     }
 }
